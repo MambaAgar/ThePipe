@@ -5,6 +5,7 @@
  * Date: 6/8/17
  * Time: 1:16 PM
  */
+include_once('elements.php');
 elements::header('Home');
 ?>
 <div class="jumbotron">

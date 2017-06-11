@@ -46,11 +46,8 @@ class elements
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="index.php">Home</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <button type="button" class="btn btn-default navbar-btn"
-                                onclick="window.location = 'login.php'">Sign in
-                        </button>
+                        <li><a href="new.php">Upload</a></li>
+                        <li><a href="list.php">List</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -59,10 +56,23 @@ class elements
         <?php
     }
 
-    static function footer()
+    static function footer($videostream = '')
     {
         ?>
         </div><!--/.container -->
+        <?php if($videostream != ''): ?>
+        <script src="resources/js/hasplayer.js"></script>
+        <script>
+            (function(){
+                var stream = {
+                    url: "<?php echo $videostream; ?>"
+                };
+                var mediaPlayer = new MediaPlayer();
+                mediaPlayer.init(document.querySelector("#videoPlayer"));
+                mediaPlayer.load(stream);
+            })();
+        </script>
+        <?php endif; ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
         <script src="resources/js/bootstrap.min.js"></script>
